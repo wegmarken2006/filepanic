@@ -7,9 +7,9 @@ Wrapper around some file library functions and other file utilities aiming to si
 //go.mode file
 module testfp
 
-require github.com/wegmarken2006/filepanic v1.0.1
+require github.com/wegmarken2006/filepanic v1.0.2
 //uncomment the line below when locally developing filepanic module
-//replace github.com/wegmarken2006/filepanic v1.0.1 => ./filepanic
+//replace github.com/wegmarken2006/filepanic v1.0.2 => ./filepanic
 
 go 1.17
 ```
@@ -36,6 +36,12 @@ func main() {
 
 	file.Seek(0, 0)
 	text := file.ReadLines()
+	Println(text)
+
+	fp.Mkdir("tmp")
+	text = fp.FilesInDir("tmp")
+	Println(text)
+	text = fp.DirsInDir("./")
 	Println(text)
 }
 ```
