@@ -4,11 +4,20 @@ Wrapper around some file library functions and other file utilities aiming to si
 
 ## Example
 ``` go
+//go.mode file
+module testfp
+
+require github.com/wegmarken2006/filepanic v1.0.1
+
+go 1.17
+```
+
+``` go
+//testfp.go file
 package main
 
 import (
 	. "fmt"
-
 	fp "github.com/wegmarken2006/filepanic"
 )
 
