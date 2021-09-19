@@ -8,6 +8,8 @@ Wrapper around some file library functions and other file utilities aiming to si
 module testfp
 
 require github.com/wegmarken2006/filepanic v1.0.1
+//uncomment the line below when locally developing filepanic module
+//replace github.com/wegmarken2006/filepanic v1.0.1 => ./filepanic
 
 go 1.17
 ```

@@ -4,6 +4,8 @@ import (
 	"bufio"
 	"encoding/csv"
 	"io"
+	"io/fs"
+	"io/ioutil"
 	"os"
 )
 
@@ -59,6 +61,47 @@ func ReadCommentedCSV(filename string, delimiter rune, comment rune) [][]string 
 		out = append(out, record)
 	}
 	return out
+}
+
+func FilesInDir(dirpath string) []string {
+	var out []string
+
+	files, err := ioutil.ReadDir(dirpath)
+	if err != nil {
+		panic(err)
+	}
+
+	for _, file := range files {
+		if !file.IsDir() {
+			out = append(out, file.Name())
+		}
+	}
+
+	return out
+}
+
+func DirsInDir(dirpath string) []string {
+	var out []string
+
+	files, err := ioutil.ReadDir(dirpath)
+	if err != nil {
+		panic(err)
+	}
+
+	for _, file := range files {
+		if file.IsDir() {
+			out = append(out, file.Name())
+		}
+	}
+
+	return out
+}
+
+func Mkdir(name string) {
+	err := os.Mkdir(name, fs.ModeDir)
+	if err != nil {
+		panic(err)
+	}
 }
 
 func ReadCSV(filename string, delimiter rune) [][]string {
