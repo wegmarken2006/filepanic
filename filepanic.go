@@ -174,3 +174,11 @@ func (fpfile *File) Close() {
 		panic(err)
 	}
 }
+
+func (fpfile *File) Metadata() fs.FileInfo {
+	metadata, err := fpfile.File.Stat()
+	if err != nil {
+		panic(err)
+	}
+	return metadata
+}
