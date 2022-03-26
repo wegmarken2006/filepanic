@@ -139,7 +139,7 @@ func (fpfile *File) Write(bytes []byte) int {
 
 func (fpfile *File) Read(bytes []byte) int {
 	n, err := fpfile.File.Read(bytes)
-	if err != nil {
+	if (err != nil) && (err != io.EOF){
 		panic(err)
 	}
 	return n
