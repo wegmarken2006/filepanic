@@ -97,6 +97,15 @@ func DirsInDir(dirpath string) []string {
 	return out
 }
 
+func PathExists(path string) bool {
+	_, err := os.Stat(path)
+	if err != nil {
+		return false
+	} else {
+		return true
+	}
+}
+
 func Mkdir(name string) {
 	err := os.Mkdir(name, fs.ModeDir)
 	if err != nil {
