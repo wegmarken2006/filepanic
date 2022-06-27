@@ -7,6 +7,7 @@ import (
 	"io/fs"
 	"io/ioutil"
 	"os"
+	"runtime"
 )
 
 type File struct {
@@ -107,7 +108,13 @@ func PathExists(path string) bool {
 }
 
 func Mkdir(name string) {
-	err := os.Mkdir(name, fs.ModeDir)
+	var err error
+	if runtime.GOOS == "linux" {
+		err = os.Mkdir(name, 0700)
+	} else {
+		err = os.Mkdir(name, fs.ModeDir)
+	}
+	
 	if err != nil {
 		panic(err)
 	}
