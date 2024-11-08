@@ -131,6 +131,7 @@ func ReadCSV(filename string, delimiter rune) [][]string {
 
 	r := csv.NewReader(file)
 	r.Comma = delimiter
+	r.LazyQuotes = true
 
 	for {
 		record, err := r.Read()
